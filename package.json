@@ -1,7 +1,7 @@
 {
-  "name": "@hurdlegroup/robotjs",
-  "version": "0.0.0-development",
-  "description": "Node.js Desktop Automation.",
+  "name": "@chill4share/robotjs",
+  "version": "1.0.0",
+  "description": "Node.js Desktop Automation (Forked by Chill4Share).",
   "main": "index.js",
   "typings": "index.d.ts",
   "scripts": {
@@ -20,12 +20,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hurdlegroup/robotjs"
+    "url": "git+https://github.com/chill4share/robotjs.git"
   },
   "maintainers": [
     {
-      "name": "Daniel McAssey",
-      "email": "daniel.mcassey@hurdle.live"
+      "name": "Chill4Share",
+      "email": "chill4share@gmail.com"
     }
   ],
   "keywords": [
@@ -54,9 +54,9 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/hurdlegroup/robotjs/issues"
+    "url": "https://github.com/chill4share/robotjs/issues"
   },
-  "homepage": "https://github.com/hurdlegroup/robotjs",
+  "homepage": "https://github.com/chill4share/robotjs",
   "dependencies": {
     "node-addon-api": "*",
     "node-gyp-build": "^4.8.1"

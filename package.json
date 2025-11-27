@@ -1,6 +1,6 @@
 {
   "name": "@chill4share/robotjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Node.js Desktop Automation (Forked by Chill4Share).",
   "main": "index.js",
   "typings": "index.d.ts",

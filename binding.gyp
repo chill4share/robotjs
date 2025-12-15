@@ -3,97 +3,75 @@
     'target_name': 'robotjs',
 
     'dependencies': [
-      '<(module_root_dir)/../../../node_modules/node-addon-api/node_api.gyp:nothing'
+      '<!(node -p "require(\'node-addon-api\').gyp")',
     ],
 
     'include_dirs': [
-      '<(module_root_dir)/../../../node_modules/node-addon-api'
+      '<!(node -p "require(\'node-addon-api\').include")',
     ],
 
     'cflags!': [ '-fno-exceptions' ],
     'cflags_cc!': [ '-fno-exceptions' ],
+
     'xcode_settings': {
       'GCC_ENABLE_CPP_EXCEPTIONS': 'YES',
       'CLANG_CXX_LIBRARY': 'libc++',
       'MACOSX_DEPLOYMENT_TARGET': '10.7',
-      'OTHER_CFLAGS': [
-        '-stdlib=libc++',
-        '-mmacosx-version-min=10.7'
-      ]
+      'OTHER_CFLAGS': [ '-arch x86_64', '-arch arm64' ],
+      'OTHER_LDFLAGS': [ '-arch x86_64', '-arch arm64' ]
     },
+
     'msvs_settings': {
-      'VCCLCompilerTool': {
-        'ExceptionHandling': 1
-      }
+      'VCCLCompilerTool': { 'ExceptionHandling': 1 },
     },
+
     'conditions': [
-      ['OS=="mac"', {
+      ['OS == "mac"', {
+        'include_dirs': [
+          'System/Library/Frameworks/CoreFoundation.Framework/Headers',
+          'System/Library/Frameworks/Carbon.Framework/Headers',
+          'System/Library/Frameworks/ApplicationServices.framework/Headers',
+          'System/Library/Frameworks/OpenGL.framework/Headers',
+        ],
+        'link_settings': {
+          'libraries': [
+            '-framework Carbon',
+            '-framework CoreFoundation',
+            '-framework ApplicationServices',
+            '-framework OpenGL'
+          ]
+        }
+      }],
+
+      ['OS == "linux"', {
+        'link_settings': {
+          'libraries': [ '-lpng', '-lz', '-lX11', '-lXtst' ]
+        },
         'sources': [
-          'src/robotjs.cc',
-          'src/deadbeef_rand.c',
-          'src/mouse.c',
-          'src/keypress.c',
-          'src/keycode.c',
-          'src/screen.c',
-          'src/screengrab.c',
-          'src/snprintf.c',
-          'src/MMBitmap.c',
-          'src/Mac/keypress_osx.mm',
-          'src/Mac/mouse_osx.mm',
-          'src/Mac/screen_osx.mm'
+          '<(module_root_dir)/src/xdisplay.c'
         ]
       }],
-      ['OS=="win"', {
+
+      ["OS=='win'", {
+        'defines': ['IS_WINDOWS'],
         'sources': [
-          'src/robotjs.cc',
-          'src/deadbeef_rand.c',
-          'src/mouse.c',
-          'src/keypress.c',
-          'src/keycode.c',
-          'src/screen.c',
-          'src/screengrab.c',
-          'src/snprintf.c',
-          'src/MMBitmap.c',
-          'src/Windows/keypress_win.c',
-          'src/Windows/mouse_win.c',
-          'src/Windows/screen_win.c'
-        ],
-        'libraries': [
-          '-lgdi32',
-          '-luser32'
-        ]
-      }],
-      ['OS=="linux"', {
-        'sources': [
-          'src/robotjs.cc',
-          'src/deadbeef_rand.c',
-          'src/mouse.c',
-          'src/keypress.c',
-          'src/keycode.c',
-          'src/screen.c',
-          'src/screengrab.c',
-          'src/snprintf.c',
-          'src/MMBitmap.c',
-          'src/X11/keypress_x11.c',
-          'src/X11/mouse_x11.c',
-          'src/X11/screen_x11.c'
-        ],
-        'libraries': [
-          '-lX11',
-          '-lXtst'
+          '<(module_root_dir)/src/Windows/keypress_win.c',
+          '<(module_root_dir)/src/Windows/mouse_win.c',
+          '<(module_root_dir)/src/Windows/screen_win.c'
         ]
       }]
     ],
+
     'sources': [
-      'src/robotjs.cc',
-      'src/deadbeef_rand.c',
-      'src/mouse.c',
-      'src/keypress.c',
-      'src/keycode.c',
-      'src/screen.c',
-      'src/screengrab.c',
-      'src/snprintf.c',
-      'src/MMBitmap.c'
+      '<(module_root_dir)/src/robotjs.cc',
+      '<(module_root_dir)/src/deadbeef_rand.c',
+      '<(module_root_dir)/src/mouse.c',
+      '<(module_root_dir)/src/keypress.c',
+      '<(module_root_dir)/src/keycode.c',
+      '<(module_root_dir)/src/screen.c',
+      '<(module_root_dir)/src/screengrab.c',
+      '<(module_root_dir)/src/snprintf.c',
+      '<(module_root_dir)/src/MMBitmap.c'
     ]
   }]
 }

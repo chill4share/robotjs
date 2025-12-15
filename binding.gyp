@@ -7,8 +7,8 @@
     ],
 
     "include_dirs": [
-      "../node-addon-api",
-      "./src"
+      "<!@(node -p \"require('node-addon-api').include\")",
+		"<(module_root_dir)/src"
     ],
 
     "cflags!": [ "-fno-exceptions" ],

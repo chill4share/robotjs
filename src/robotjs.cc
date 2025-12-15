@@ -1,4 +1,4 @@
-#include <napi.h>
+#include "napi.h"
 #include <vector>
 #include "mouse.h"
 #include "deadbeef_rand.h"

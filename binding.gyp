@@ -1,12 +1,15 @@
 {
   'targets': [{
     'target_name': 'robotjs',
+
     'dependencies': [
-      '<(module_root_dir)/../../node-addon-api/src/node_api.gyp:nothing'
+      "<!(node -p \"const p=require('path'); const d=p.dirname(require.resolve('node-addon-api/package.json')); const rel=p.relative(process.cwd(), d).replace(/\\\\\\\\/g,'/'); console.log(rel + '/src/node_api.gyp:nothing');\")"
     ],
+
     'include_dirs': [
-      '<(module_root_dir)/../../node-addon-api'
+      "<!(node -p \"const p=require('path'); const d=p.dirname(require.resolve('node-addon-api/package.json')); console.log(p.relative(process.cwd(), d).replace(/\\\\\\\\/g,'/')); \")"
     ],
+
     'cflags!': [ '-fno-exceptions' ],
     'cflags_cc!': [ '-fno-exceptions' ],
     'xcode_settings': {

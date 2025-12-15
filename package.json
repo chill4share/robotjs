@@ -4,29 +4,36 @@
   "description": "Node.js Desktop Automation (Forked by Chill4Share).",
   "main": "index.js",
   "typings": "index.d.ts",
+
   "scripts": {
     "test": "run-script-os",
     "test:darwin:linux": "jasmine test/**/*.js",
     "test:win32": "jasmine test/**/*.js",
+
     "build": "node-gyp-build --debug",
     "build:prod": "node-gyp-build",
+
     "install-debug": "npm run build",
+
     "prebuild": "prebuildify --napi --strip",
     "prebuild-darwin-universal": "npm run prebuild -- --arch x64+arm64",
     "prebuild-linux-x64": "npm run prebuild -- --arch x64",
     "prebuild-win32-x86": "npm run prebuild -- --arch ia32",
     "prebuild-win32-x64": "npm run prebuild -- --arch x64"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chill4share/robotjs.git"
   },
+
   "maintainers": [
     {
       "name": "Chill4Share",
       "email": "chill4share@gmail.com"
     }
   ],
+
   "keywords": [
     "Automation",
     "GUI",
@@ -44,25 +51,31 @@
     "learning",
     "color"
   ],
+
   "author": "Jason Stallings",
   "license": "MIT",
+
   "gypfile": true,
+
   "binary": {
-    "napi_versions": [
-      "*"
-    ]
+    "napi_versions": ["*"]
   },
+
   "bugs": {
     "url": "https://github.com/chill4share/robotjs/issues"
   },
+
   "homepage": "https://github.com/chill4share/robotjs",
+
   "dependencies": {
     "node-addon-api": "^8.0.0",
     "node-gyp-build": "^4.8.1"
   },
+
   "publishConfig": {
     "access": "public"
   },
+
   "devDependencies": {
     "jasmine": "^5.1.0",
     "electron": "^31.1.0",

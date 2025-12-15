@@ -3,11 +3,11 @@
     'target_name': 'robotjs',
 
     'dependencies': [
-      '<(module_root_dir)/../../../node-addon-api/src/node_api.gyp:nothing'
+      '<(module_root_dir)/../../../node_modules/node-addon-api/node_api.gyp:nothing'
     ],
 
     'include_dirs': [
-      '<(module_root_dir)/../../../node-addon-api'
+      '<(module_root_dir)/../../../node_modules/node-addon-api'
     ],
 
     'cflags!': [ '-fno-exceptions' ],

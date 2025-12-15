@@ -1,6 +1,6 @@
 {
   "name": "@chill4share/robotjs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Node.js Desktop Automation (Forked by Chill4Share).",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -9,12 +9,9 @@
     "test": "run-script-os",
     "test:darwin:linux": "jasmine test/**/*.js",
     "test:win32": "jasmine test/**/*.js",
-
     "build": "node-gyp-build --debug",
     "build:prod": "node-gyp-build",
-
     "install-debug": "npm run build",
-
     "prebuild": "prebuildify --napi --strip",
     "prebuild-darwin-universal": "npm run prebuild -- --arch x64+arm64",
     "prebuild-linux-x64": "npm run prebuild -- --arch x64",

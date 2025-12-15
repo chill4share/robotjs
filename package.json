@@ -10,7 +10,6 @@
     "test:win32": "jasmine test/**/*.js",
     "build": "node-gyp-build --debug",
     "build:prod": "node-gyp-build",
-    "install": "node-gyp-build",
     "install-debug": "npm run build",
     "prebuild": "prebuildify --napi --strip",
     "prebuild-darwin-universal": "npm run prebuild -- --arch x64+arm64",

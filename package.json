@@ -10,7 +10,7 @@
     "test:win32": "jasmine test/**/*.js",
     "build": "node-gyp-build --debug",
     "build:prod": "node-gyp-build",
-    "install": "npm run build:prod",
+    "install": "node-gyp-build",
     "install-debug": "npm run build",
     "prebuild": "prebuildify --napi --strip",
     "prebuild-darwin-universal": "npm run prebuild -- --arch x64+arm64",
@@ -50,7 +50,7 @@
   "gypfile": true,
   "binary": {
     "napi_versions": [
-      3
+      "*"
     ]
   },
   "bugs": {
@@ -58,7 +58,7 @@
   },
   "homepage": "https://github.com/chill4share/robotjs",
   "dependencies": {
-    "node-addon-api": "*",
+    "node-addon-api": "^8.0.0",
     "node-gyp-build": "^4.8.1"
   },
   "publishConfig": {

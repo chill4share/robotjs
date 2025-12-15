@@ -14,55 +14,73 @@
       'CLANG_CXX_LIBRARY': 'libc++',
       'MACOSX_DEPLOYMENT_TARGET': '10.7',
       'OTHER_CFLAGS': [
-        '-arch x86_64',
-        '-arch arm64'
-      ],
-      'OTHER_LDFLAGS': [
-        '-arch x86_64',
-        '-arch arm64'
+        '-stdlib=libc++',
+        '-mmacosx-version-min=10.7'
       ]
     },
     'msvs_settings': {
-      'VCCLCompilerTool': { 'ExceptionHandling': 1 },
+      'VCCLCompilerTool': {
+        'ExceptionHandling': 1
+      }
     },
     'conditions': [
-      ['OS == "mac"', {
-        'include_dirs': [
-          'System/Library/Frameworks/CoreFoundation.Framework/Headers',
-          'System/Library/Frameworks/Carbon.Framework/Headers',
-          'System/Library/Frameworks/ApplicationServices.framework/Headers',
-          'System/Library/Frameworks/OpenGL.framework/Headers',
-        ],
-        'link_settings': {
-          'libraries': [
-            '-framework Carbon',
-            '-framework CoreFoundation',
-            '-framework ApplicationServices',
-            '-framework OpenGL'
-          ]
-        }
-      }],
-
-      ['OS == "linux"', {
-        'link_settings': {
-          'libraries': [
-            '-lpng',
-            '-lz',
-            '-lX11',
-            '-lXtst'
-          ]
-        },
-
+      ['OS=="mac"', {
         'sources': [
-          'src/xdisplay.c'
+          'src/robotjs.cc',
+          'src/deadbeef_rand.c',
+          'src/mouse.c',
+          'src/keypress.c',
+          'src/keycode.c',
+          'src/screen.c',
+          'src/screengrab.c',
+          'src/snprintf.c',
+          'src/MMBitmap.c',
+          'src/Mac/keypress_osx.mm',
+          'src/Mac/mouse_osx.mm',
+          'src/Mac/screen_osx.mm'
         ]
       }],
-
-      ["OS=='win'", {
-        'defines': ['IS_WINDOWS']
+      ['OS=="win"', {
+        'sources': [
+          'src/robotjs.cc',
+          'src/deadbeef_rand.c',
+          'src/mouse.c',
+          'src/keypress.c',
+          'src/keycode.c',
+          'src/screen.c',
+          'src/screengrab.c',
+          'src/snprintf.c',
+          'src/MMBitmap.c',
+          'src/Windows/keypress_win.c',
+          'src/Windows/mouse_win.c',
+          'src/Windows/screen_win.c'
+        ],
+        'libraries': [
+          '-lgdi32',
+          '-luser32'
+        ]
+      }],
+      ['OS=="linux"', {
+        'sources': [
+          'src/robotjs.cc',
+          'src/deadbeef_rand.c',
+          'src/mouse.c',
+          'src/keypress.c',
+          'src/keycode.c',
+          'src/screen.c',
+          'src/screengrab.c',
+          'src/snprintf.c',
+          'src/MMBitmap.c',
+          'src/X11/keypress_x11.c',
+          'src/X11/mouse_x11.c',
+          'src/X11/screen_x11.c'
+        ],
+        'libraries': [
+          '-lX11',
+          '-lXtst'
+        ]
       }]
     ],
-
     'sources': [
       'src/robotjs.cc',
       'src/deadbeef_rand.c',

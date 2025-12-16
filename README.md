@@ -3,6 +3,10 @@
 [![Build all versions and publish to NPM](https://github.com/hurdlegroup/robotjs/actions/workflows/build-all.yml/badge.svg)](https://github.com/hurdlegroup/robotjs/actions/workflows/build-all.yml)
 <a href="https://www.npmjs.com/package/@chill4share/robotjs"><img src="https://img.shields.io/npm/v/@hurdlegroup/robotjs.svg"></a>
 
+> Note: I forked the project from the author [hurdlegroup](https://github.com/hurdlegroup/robotjs) and modified the binding.gyp file to use it in a custom Node.js/Electron project (rebuild), so it is only suitable for certain specific use cases.
+
+> Lưu ý: Mình fork lại của tác giả [hurdlegroup](https://github.com/hurdlegroup/robotjs) sửa binding.pyp để rebuild sử dụng cho dự án Nodejs/Electtron riêng nên sẽ chỉ phù hợp với 1 số trường hợp nhất định
+
 > Node.js Desktop Automation. Control the mouse, keyboard, and read the screen.
 
 **This is a fork of the original unmaintained RobotJS by OctalMage found here: [octalmage/robotjs](https://github.com/octalmage/robotjs)**
@@ -175,3 +179,4 @@ MIT
 
 Based on [autopy](https://github.com/msanders/autopy).
 Maintained by [Daniel McAssey](https://glokon.me).
+
